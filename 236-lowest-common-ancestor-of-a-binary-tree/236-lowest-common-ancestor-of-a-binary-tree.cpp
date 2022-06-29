@@ -8,6 +8,7 @@
  * };
  */
 class Solution {
+    //time complexity :O(n)
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
            if(root == NULL){
