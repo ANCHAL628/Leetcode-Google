@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-     //approach O(n)
+  /*   //approach O(n)
      //space complexity O(n)
        stack<int>s ;
        int j = 0 ;
@@ -12,6 +12,19 @@ public:
                j++ ;
            }
        }
-        return s.empty() ;
+        return s.empty() ;*/
+        //approach = O(n)
+        //space complexity = O(1)
+        int k = -1 ;
+        int j = 0  ;
+        for(int i = 0 ; i < pushed.size() ; i++){
+            pushed[++k] = pushed[i] ;
+            while(!(k == -1) && pushed[k] == popped[j]){
+                --k ;
+                j++ ;
+            }
+        }
+        return k == -1 ;
+        
     }
 };
