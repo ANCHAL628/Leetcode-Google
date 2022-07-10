@@ -2,6 +2,7 @@ class Solution {
 public:
     bool search(vector<int>& nums, int target) {
       //just only observe one thing duplicacy then move start += 1
+        //extra
         int start = 0 ;
         int end = nums.size()-1 ;
         while(start <= end){
