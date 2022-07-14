@@ -1,23 +1,23 @@
 class Solution {
 public:
     int maxScore(vector<int>& cardPoints, int k) {
-        int front = k-1 ;
-        int end = cardPoints.size()-1 ;
-        int maxi = 0 ;
+        //taake first k sum
         int sum = 0 ;
-        //sum of first k elements
+        int maxi = INT_MIN ;
         for(int i = 0 ; i < k ; i++){
-           sum += cardPoints[i]  ;
+          sum  +=  cardPoints[i] ;
         }
+        int first = k-1 ;
+        int last = cardPoints.size()-1 ;
         maxi = sum ;
-        //take element from back and substract it from the start
-        while(front >= 0 && front < end){
-            sum += cardPoints[end] ;
-            sum -= cardPoints[front] ;
+        while(first >= 0 && first < last){
+            sum += cardPoints[last] ;
+            sum -= cardPoints[first] ;
             maxi = max(maxi,sum) ;
-            front-- ;
-            end-- ;
-        }
+            first-- ;
+            last-- ;
+            
+         }
         return maxi ;
-    }
+        }
 };
