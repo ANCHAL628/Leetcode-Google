@@ -53,7 +53,7 @@ public:
             if(root->left != NULL && root->right != NULL )  {
                 int mini = minVal(root->right);          //finding min val in right subtree to use
                 root->val = mini;                        //replacing the root val with mini.
-                root->right = deleteNode(root->right,mini); //deleting mini from right subtree.
+                root->right = deleteNode(root->right,mini); /*//deleting mini from right subtree.*/
                 return root;
             }          
         
