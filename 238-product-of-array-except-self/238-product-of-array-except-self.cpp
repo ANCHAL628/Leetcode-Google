@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        //use postfix and prefix technique
+        /*//use postfix and prefix technique*/
         vector<int>prefix(nums.size(),1) ;
         int product = 1 ;
       //  nums[0] = 1 ;
