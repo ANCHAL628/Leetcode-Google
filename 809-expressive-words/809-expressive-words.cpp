@@ -1,7 +1,3 @@
-// 1. Idea : firstly we count the frequencies of every elements of given string and stored in vector.
-// 2. Then we traverse through every string of words and compare the last index of every similar element with the frequency vector. If it's frequency is equal to number of time it appears in ith string or it is more than 3 then increament our ans variable and do check for next element.
-// 3. After complete iteration in the ith string we check if our ans count == vector v.size() then we increament our res variabl e by one.
-    
 class Solution {
 public:
     int expressiveWords(string s, vector<string>& words) {
