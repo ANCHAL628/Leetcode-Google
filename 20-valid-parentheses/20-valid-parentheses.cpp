@@ -1,4 +1,6 @@
 class Solution {
+    //tc : O(n)
+    //sc : O(n)
 public:
     bool isMatching(char x , char y) {
         return ((x == '(' && y == ')') || (x == '{' && y == '}')  || (x == '[' && y == ']')) ;
