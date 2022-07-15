@@ -7,22 +7,23 @@ class Solution {
   public:
     // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-        vector<int>answer ;
-        vector<bool>visited(V,false) ;
-        DFS(answer,V,adj,0,visited) ;
-        return answer ;
+       vector<bool>visited(V,false) ;
+       vector<int>answer ;
+       DFS(answer,V,adj,0,visited) ;
+       return answer ;
         // Code here
     }
     void DFS(vector<int>&answer,int V,vector<int>adj[],int currentNode,vector<bool>&visited){
-        if(visited[currentNode] == true){
-            return ;
-        }
-        visited[currentNode] = true ;
-        answer.push_back(currentNode) ;
-        vector<int>neighbour = adj[currentNode] ;
-        for(auto it : neighbour){
-            DFS(answer,V,adj,it,visited) ;
-        }
+         if(visited[currentNode] == true){
+             return ;
+         }
+         visited[currentNode] = true ;
+         answer.push_back(currentNode) ;
+         vector<int>neigh = adj[currentNode] ;
+         for(auto it : neigh){ 
+             DFS(answer,V,adj,it,visited) ;
+         } 
+         return ;
     }
 };
 
