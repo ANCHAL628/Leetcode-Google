@@ -1,5 +1,6 @@
 class Solution {
 public:
+  //tc : O(n^2)
   void changeRow(int currRow,vector<vector<int>>&matrix){
       for(int i = 0 ; i < matrix[currRow].size() ; i++){
           matrix[currRow][i] = 0 ;
