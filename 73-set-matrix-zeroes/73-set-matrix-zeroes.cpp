@@ -1,33 +1,29 @@
 class Solution {
 public:
-    void setRowsToZero(vector<vector<int>>& matrix,int rowNo){
-        for(int col = 0 ; col < matrix[0].size() ; col++){
-            matrix[rowNo][col] = 0 ;
-        }
-    }
-     void setColToZero(vector<vector<int>>& matrix,int colno){
-        for(int row = 0 ; row < matrix.size() ; row++){
-            matrix[row][colno] = 0 ;
-        }
-    }
-    void setZeroes(vector<vector<int>>& matrix) {
-        //O(n^2)
-        vector<pair<int,int>>rowCol ;
-        pair<int,int>p ;
-        //store the row and column in pair where its 0
-        for(int i = 0 ; i < matrix.size() ; i++){
-            for(int j = 0 ; j < matrix[0].size() ; j++){
-                if(matrix[i][j] == 0){
-                   pair p = make_pair(i,j);
-                   rowCol.push_back(p) ;
-                }
-               
-                
-             }
-        }
-        for(auto it : rowCol){
-            setRowsToZero(matrix,it.first) ;
-            setColToZero(matrix,it.second) ;
-        }
+  void changeRow(int currRow,vector<vector<int>>&matrix){
+      for(int i = 0 ; i < matrix[currRow].size() ; i++){
+          matrix[currRow][i] = 0 ;
+      }
+  }
+   void changeCol(int currCol,vector<vector<int>>&matrix){
+      for(int i = 0 ; i < matrix.size() ; i++){
+          matrix[i][currCol] = 0 ;
+      }
+  }
+  void setZeroes(vector<vector<int>>& matrix) {
+     //O(n^2)-->store all the rows and columns no where the value is zero and then separately change them
+      vector<pair<int,int>>rowCol ;
+      for(int i = 0 ; i < matrix.size() ; i++){
+          for(int j = 0 ; j < matrix[i].size() ; j++){
+              if(matrix[i][j] == 0){
+                  pair<int,int>K({i,j}); 
+                  rowCol.push_back(K) ;
+              }
+          }
+      }
+      for(auto it : rowCol){
+          changeRow(it.first,matrix) ; 
+          changeCol(it.second,matrix) ;
+      }
     }
 };
