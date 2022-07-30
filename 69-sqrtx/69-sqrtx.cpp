@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //O(log n)
     int mySqrt(int x) {
         int low = 1 ;
         int high = x  ;
