@@ -23,6 +23,7 @@ public:
         }
         return ans ;
     }
+    //o(log n)
      int LastIndex(vector<int>& nums, int target){
         int low = 0 ;
         int high = nums.size()-1 ;
