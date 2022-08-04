@@ -1,26 +1,27 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        //o(n^3) fin all the substring then find the longest substring 
-        //O(n) ->sliding window
+        //find substring and than iterate through each substring and then count each element
+        //sliding window 
         unordered_map<char,int>mp ;
-        int start = 0 ;
-        int end = 0 ;
+        int low = 0 ;
+        int high = 0 ;
         int maxi = 0 ;
-        while(end < s.size()){
-            mp[s[end]]++ ;
-            if(mp.size() == end-start+1){
-                maxi = max(maxi,end-start+1) ;
-            }else if(mp.size() < end-start+1){
-                while(mp.size() < end-start+1){
-                    mp[s[start]]-- ;
-                    if(mp[s[start]] == 0){
-                        mp.erase(s[start]) ;
+        while(high < s.size()){
+            mp[s[high]]++ ;
+           // high++ ;
+            if(mp.size() == high-low+1){
+                maxi = max(maxi,high-low+1) ;
+            }else if(mp.size() < high-low+1){
+                while(mp.size() < high-low+1){
+                    mp[s[low]]-- ;
+                    if(mp[s[low]] == 0){
+                        mp.erase(s[low]) ;
                     }
-                    start++ ;
+                    low++ ;
                 }
             }
-            end++ ;
+            high++ ;
         }
         return maxi ;
     }
