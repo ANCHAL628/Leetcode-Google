@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //tc : O(n)
     int maxArea(vector<int>& height) {
         int low = 0 ;
         int end = height.size()-1 ;
