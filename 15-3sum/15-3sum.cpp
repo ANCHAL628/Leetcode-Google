@@ -1,6 +1,7 @@
 class Solution {
 public:
     //O(n^2)
+    //O(n^3)
     vector<vector<int>> threeSum(vector<int>& nums) {
         vector<vector<int>>answer ;
         if(nums.size() < 3){
