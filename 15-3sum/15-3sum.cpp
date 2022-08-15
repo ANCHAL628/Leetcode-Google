@@ -1,37 +1,37 @@
 class Solution {
 public:
-    //O(n^2)
-    //O(n^3)
+    //O(n^3) -> use three 
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>>answer ;
+        vector<vector<int>>trip ;
         if(nums.size() < 3){
-            return answer ;
+            return trip ;
         }
         sort(nums.begin(),nums.end()) ;
         for(int i = 0 ;  i < nums.size() ; i++){
             if(i == 0 || nums[i-1] != nums[i]){
                 int low = i+1 ;
-                int end = nums.size()-1 ;
-                while(low < end){
-                    int sum = nums[i]+nums[low]+nums[end] ;
-                    if(sum == 0){
-                        answer.push_back({nums[i],nums[low],nums[end]}) ;
-                        while(low < end && nums[low] == nums[low+1]){
+                int high = nums.size()-1 ;
+                //int findSum = 0-(nums[low]+nums[high]) ;
+                while(low < high){
+                  int sum = nums[i]+nums[low]+nums[high]  ;
+                  if(sum == 0){
+                     trip.push_back({nums[i],nums[low],nums[high]}) ;
+                       while(low < high && nums[low] == nums[low+1]){
                             low++ ;
                         }
-                        while(low < end && nums[end] == nums[end-1]){
-                            end-- ;
+                        while(low < high && nums[high] == nums[high-1]){
+                            high-- ;
                         }
                         low++ ;
-                        end-- ;
-                    }else if(sum < 0){
-                        low++ ;
-                    }else{
-                        end-- ;
-                    }
+                        high-- ;
+                  }else if(sum < 0){
+                      low++ ;
+                  }else{
+                      high-- ;
+                  }
                 }
             }
         }
-       return answer ; 
+        return trip ;
     }
 };
