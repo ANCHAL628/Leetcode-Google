@@ -1,7 +1,7 @@
 class Solution {
 public:
-    /*//tc : O(n)
-    */
+    //tc :O(n^2)
+    //tc : O(n)
     int maxArea(vector<int>& height) {
         int low = 0 ;
         int end = height.size()-1 ;
