@@ -2,12 +2,7 @@ class Solution {
 public:
     //O(n)
     int climbStairs(int n) {
-        //recursion as we have choices so whther I will be taking 1 step or two steps and tc : exponential
-      //  unordered_map<int,int>mp ;
-        //tc : O(2^n)
-        //sc : O(n)
-        //Optimal ki tc : O(n)
-        //sc  = O(n);
+      
         unordered_map<int,int>mp ;
         return noOfWays(n,0,mp) ;
     }
