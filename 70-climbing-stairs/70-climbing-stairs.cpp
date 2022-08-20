@@ -6,7 +6,7 @@ public:
         return noOfWays(n,0,mp) ;
     }
     int noOfWays(int totalStairs,int currentSt,unordered_map<int,int>&mp){
-      //base case having == n
+     
         if(totalStairs == currentSt){
             return 1 ;
         }
