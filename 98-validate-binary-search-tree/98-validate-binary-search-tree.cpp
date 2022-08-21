@@ -11,18 +11,18 @@
  */
 class Solution {
 public:
+    //tc : O(n)
     bool isValidBST(TreeNode* root) {
-       bool find = true ;
-        //tc : O(n)
-      return validate(root,LONG_MIN,LONG_MAX,find) ;
-    }
-    bool validate(TreeNode* root,long long minVal,long long maxVal,bool &find){
+         bool find = true ;
+         return validateBST(root,LONG_MIN,LONG_MAX) ;
+    } 
+    bool validateBST(TreeNode* root,long long int left,long long int right){
          if(root == NULL){
              return true ;
+         }if((left >= root->val) || (right <= root->val)){
+             return false ;
          }
-        if(root->val <= minVal || root->val >= maxVal){
-            return false ;
-        }
-        return validate(root->left,minVal,root->val,find)&&validate(root->right,root->val,maxVal,find) ;
+        return validateBST(root->left,left,root->val)&&validateBST(root->right,root->val,right) ;
+         
     }
 };
