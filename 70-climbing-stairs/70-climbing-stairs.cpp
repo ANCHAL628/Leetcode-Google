@@ -1,26 +1,29 @@
 class Solution {
 public:
+    //recursion time complexity = O(2^n)
+    //
     int climbStairs(int n) {
-      
+     //unordered map and reursion
         unordered_map<int,int>mp ;
-        return noOfWays(n,0,mp) ;
+     return noOfSteps(n,mp,0) ;
     }
-    int noOfWays(int totalStairs,int currentSt,unordered_map<int,int>&mp){
-     
-        if(totalStairs == currentSt){
-            return 1 ;
-        }
-        if(totalStairs < currentSt){
+    int noOfSteps(int n,unordered_map<int,int>&mp,int currentIn){
+       if(currentIn == n){
+           return 1 ;
+       }
+        if(currentIn > n){
             return 0 ;
         }
-        int currentK= currentSt;
-        if(mp.find(currentSt) != mp.end()){
-            return mp[currentSt] ;
+        int curr = currentIn ;
+        if(mp.find(currentIn) != mp.end()){
+            return mp[currentIn] ;
         }
-        int oneJump = noOfWays(totalStairs,currentSt+1,mp) ;
-        int twoJump = noOfWays(totalStairs,currentSt+2,mp) ;
-        mp[currentSt] = oneJump+twoJump ;
-        return mp[currentSt] ;
-    } 
+        
+        int oneStep = noOfSteps(n,mp,currentIn+1) ;
+        int twoStep = noOfSteps(n,mp,currentIn+2) ;
+        mp[curr] = oneStep+twoStep ;
+        return mp[curr] ;
+        
+    }
     
 };
