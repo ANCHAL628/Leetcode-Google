@@ -11,8 +11,8 @@
  */
 class Solution {
 public:
-    /*//tc -> O(n) where n is max No of nodes
-    //sc = O(H)*/
+    //tc -> O(n) where n is max No of nodes
+    //sc = O(H)
     int maxDepth(TreeNode* root) {
         return maxHeight(root) ;
     }
