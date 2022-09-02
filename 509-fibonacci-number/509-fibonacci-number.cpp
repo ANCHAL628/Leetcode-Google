@@ -3,6 +3,8 @@ public:
     int fib(int n) {
         //tc of recursion : O(2^n)
         //sc : O(n)
+        //dp tc : O(n)
+        //dp sc : O(n)
         unordered_map<int,int>mp ;
         return fibNo(n,mp)  ;
     } 
