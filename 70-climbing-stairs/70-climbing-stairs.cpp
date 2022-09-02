@@ -1,7 +1,8 @@
 class Solution {
 public:
     //recursion time complexity = O(2^n)
-    //
+    //dp time complexity : O(n)
+    //space : O(n)
     int climbStairs(int n) {
      //unordered map and reursion
         unordered_map<int,int>mp ;
