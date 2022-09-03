@@ -1,21 +1,21 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
+       //if he can rob current one then he cannot rob the next one
         unordered_map<int,int>mp ;
-        return maxMoney(nums,0,mp) ;
+        return maxRobbery(nums,mp,0) ;
     }
-    int maxMoney(vector<int>&nums,int currentIn,unordered_map<int,int>&mp){
+    int maxRobbery(vector<int>&nums,unordered_map<int,int>&mp,int currentIn){
         if(currentIn >= nums.size()){
             return 0 ;
         }
-        int currentk = currentIn ;
-        if(mp.find(currentk) != mp.end()){
-            return mp[currentk] ;
+        int currentKey = currentIn ;
+        if(mp.find(currentKey) != mp.end()){
+            return mp[currentKey] ;
         }
-        int robCurr = nums[currentIn]+maxMoney(nums,currentIn+2,mp) ;
-        int notRob = maxMoney(nums,currentIn+1,mp) ;
-        mp[currentk] = max(robCurr,notRob) ;
-        return mp[currentk] ;
-        
+        int currRob = nums[currentKey]+maxRobbery(nums,mp,currentIn+2) ;
+        int dontR = maxRobbery(nums,mp,currentIn+1) ;
+        mp[currentKey] = max(currRob,dontR) ;
+        return mp[currentKey] ;
     }
 };
