@@ -1,5 +1,7 @@
 class Solution {
 public:
+  //  tc : O(n)
+//sc : O(n)
     int minCostClimbingStairs(vector<int>& cost) {
         unordered_map<int,int>mp ;
         return min(minCost(cost,mp,0),minCost(cost,mp,1)) ;
