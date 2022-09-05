@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //extra
     int rob(vector<int>& nums) {
        //if he can rob current one then he cannot rob the next one
         unordered_map<int,int>mp ;
