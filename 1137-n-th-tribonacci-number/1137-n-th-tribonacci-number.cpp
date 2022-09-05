@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //tc : O(n)
+    //sc : O(n)
     int tribonacci(int n) {
         unordered_map<int,int>mp ;
         return nthTrib(n,mp) ; 
