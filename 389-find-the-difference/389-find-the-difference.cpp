@@ -1,16 +1,30 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-         //simple iterate through O(n) check if they are equal else return last element
-        //O(n) --> xor
-        //count the frequency which will take O(n) --> timee
-        char Xor = 0 ;
+       //string s and string t
+   /*    int low = 0 ;
+       int high = 0 ;
+       char ans ;
+       while(low < s.size() && high < t.size()){
+           if(s[low] != s[high]){
+               ans = s[low] ;
+               return ans ;
+           }else{
+              low++ ;
+              high++ ;
+           }
+       }
+      if(!ans){
+          return t[t.size()-1] ;
+      }
+      return ans ;*/
+        char xOr = 0 ;
         for(int i = 0 ; i < s.size() ; i++){
-            Xor ^= s[i] ;
+            xOr ^= s[i] ;
         }
-        for(int i = 0 ; i < t.size() ; i++){
-            Xor ^= t[i] ;
+         for(int i = 0 ; i < t.size() ; i++){
+            xOr ^= t[i] ;
         }
-        return Xor ;
+        return xOr ;
     }
 };
