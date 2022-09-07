@@ -1,9 +1,20 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        //sorting both the strings and thn return 
-        sort(s.begin(),s.end()) ;
-        sort(t.begin(),t.end()) ;
-        return s == t ;
+    map<char,int>mp1 ;
+  //  map<int,char>mp2 ;
+    for(auto it : s){
+        mp1[it]++ ;
+       }
+    for(auto it : t){
+        mp1[it]-- ;
+       }
+    for(auto it : mp1){
+        //mp1[t[i]]-- ;
+        if(it.second != 0){
+            return false ;
+        }
+       }
+       return true ;
     }
 };
