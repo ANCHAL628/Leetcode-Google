@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //tc : O(n)
+    //sc : O(n)
     vector<int> productExceptSelf(vector<int>& nums) {
       //use prefix sum technique
       vector<int>prefix(nums.size(),1) ;
