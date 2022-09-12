@@ -11,40 +11,38 @@
 class Solution {
 public:
    
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-
-        while(lists.size()>1){
-            vector<ListNode*> temp;
-            for(int i = 0; i < lists.size(); i+=2){
-                ListNode* list1 = lists[i];
-                ListNode* list2 = (i+1 < lists.size())? lists[i+1]: nullptr;
-                temp.push_back(mergeTwoLists(list1, list2));
+    ListNode* mergeKLists(vector<ListNode*>& lists){
+        int i = 0 ;
+        //merge the list till there would not be more than one
+        while(lists.size() > 1){
+            vector<ListNode*>res ;
+            for(int i = 0 ; i < lists.size() ; i+=2){
+                ListNode* list1 = lists[i] ;
+                ListNode* list2 = (i+1 < lists.size())?lists[i+1]:nullptr ;
+                res.push_back(mergeLists(list1,list2)) ;
             }
-            lists = temp;
+            lists = res ;
         }
-
         return (lists.size())? lists[0]: nullptr;
     }
-	
- ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode* head = new ListNode();
-        ListNode* headPtr = head;
-
-        while(list1 != nullptr && list2 != nullptr){
-            if(list1->val <= list2->val){
-                head->next = list1;
-                list1 = list1->next;
-            } else {
-                head->next = list2;
-                list2 = list2->next;
-            }
-            head = head->next;
-        }
-
-        if(list1 == nullptr) head->next = list2;
-        else if(list2 == nullptr) head->next = list1;
-
-        return headPtr->next;
-    }
-
+   ListNode* mergeLists(ListNode* list1,ListNode* list2){
+       ListNode* head = new ListNode() ;
+       ListNode* headptr = head ;
+       while(list1 != nullptr && list2 != nullptr){
+           if(list1->val <= list2->val){
+              head->next = list1 ;
+               list1 = list1->next ;
+           }else{
+               head->next = list2 ;
+               list2 = list2->next ;
+           }
+           head = head->next ;
+       }
+       if(list1 == nullptr){
+           head->next = list2 ;
+       }else if(list2 == nullptr){
+           head->next = list1 ;
+       }
+       return headptr->next ;
+   }
 };
