@@ -1,7 +1,7 @@
 class Solution {
 public:
     //tc : O(n)
-    //sc : O(!)
+    //sc : O(1)
     int findTargetSumWays(vector<int>& nums, int target) {
         unordered_map<string,int>mp ;
         return NoOfWays(nums,target,0,mp) ;
