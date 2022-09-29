@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //O(n) --> space
+    //O(n) --> tc
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
          stack<int>fin ;
          int j = 0 ;
