@@ -1,58 +1,33 @@
 class Solution {
 public:
     int minSumOfLengths(vector<int>& arr, int target) {
-        
         int n = arr.size();
+        vector<int> dp(n, INT_MAX);
         
-        // track prefix sum of array 
-        vector<int>sum(n+1,0);
+        int sum = 0;      
+        int ans = INT_MAX;
+        int len = INT_MAX;     
+        int start = 0;
+        int end = 0;
         
-        // track the min length target sum subarray till last pointer
-        vector<int>dp(n+1,INT_MAX);
-        
-        sum[0] = 0;
-        
-        // first pointer of the window 
-        int first = 1;        
-        
-        // result min length sum of 2 target sum sub array
-        int min_length_sum = INT_MAX;
-        
-        // current window length
-        int curr_len = 0;
-        
-        // min length target sum subarray till last pointer
-        int min_len = INT_MAX;
-        
-        // loop through array and check target sum subarray and previous min length target sum subarray
-        for(int last=1;last<=n;last++)
-        {
-            // update prefix sum for current last pointer
-            sum[last] = sum[last-1] + arr[last-1];
-            curr_len++;
+        for (end = 0; end < n; end++) {
+            sum += arr[end];
             
-            // shrink window until window sum <= target 
-            while((sum[last] - sum[first-1]) > target)
-                first++,curr_len--;
-            
-            // check for previous valid target sum subarray of min length if current window sum == target
-            if((sum[last] - sum[first-1])==target)
-            {
-                // if previous target sum subarray exists then update min_length_sum
-                // if no previous target sum subarray exists then dp[first-2] will be INT_MAX
-                // dp[first-2] returns min length of target sum subarray which has last < current first
-                if(first>1 && dp[first-2]!=INT_MAX)
-                    min_length_sum = min(min_length_sum,(dp[first-2] + curr_len));
-                
-                // update min length only any target sum subarray found 
-                min_len = min(min_len,curr_len);                                        
+            while (sum > target) {
+                sum -= arr[start];
+                start++;
             }
             
-            // update DP[last-1] with min_len which stores the min length of possible target sum subrray till last
-            dp[last-1] = min_len;
+            if (sum == target) {
+                int curLen = end - start + 1;
+                if (start > 0 && dp[start-1] != INT_MAX) 
+                {
+                    ans = min(ans, curLen + dp[start-1]); // ans will be the 2 sub-array length or current length + last min length( which is stored in dp)
+                }
+                len = min(curLen, len); 
+            }
+            dp[end] = len;  // dp stores the previous min length
         }
-        
-        // no result found if min_length_sum is INT_MAX
-        return min_length_sum==INT_MAX?-1 : min_length_sum;
+        return ans == INT_MAX ? -1 : ans;
     }
 };
