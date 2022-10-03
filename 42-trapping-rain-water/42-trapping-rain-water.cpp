@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //
     int trap(vector<int>& height) {
         //O(n) by precomputting the leftmax and rightnax
         vector<int>LeftMax(height.size()) ;
