@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+ /*       //O(n^2)
        int sum = 0 ;
        vector<int>fin ;
        bool found = false ;
@@ -20,6 +21,18 @@ public:
             }
            
        }
-        return fin ;
+        return fin ;*/
+        //Optimal
+      unordered_map<int,int>mp ;
+        vector<int>ans ;
+      for(int i = 0 ; i < nums.size() ; i++){
+          if(mp.find(target-nums[i]) != mp.end()){
+              ans.push_back(i) ;
+              ans.push_back(mp[target-nums[i]]) ;
+              break ;
+          }
+          mp[nums[i]] = i ;
+      }
+        return ans ;
     }
 };
