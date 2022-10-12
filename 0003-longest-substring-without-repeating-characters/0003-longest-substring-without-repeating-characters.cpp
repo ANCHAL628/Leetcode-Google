@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //tc :O(N)
     int lengthOfLongestSubstring(string s) {
         unordered_map<int,int>mp ;
         int start = 0 ;
