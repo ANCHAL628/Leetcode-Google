@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-      //Naive solution O(N)
+      //optimal solution = O(N)
       int maxi = INT_MIN ;
       int sum = 0 ;
       for(int i = 0 ; i < nums.size() ; i++){
