@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //O(exponential)
     vector<string> generateParenthesis(int n) {
         vector<string>parent ;
         string ans = "" ;
